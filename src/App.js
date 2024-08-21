@@ -1,10 +1,7 @@
+import ProductListPage from './pages/ProductListPage'
 
 function App() {
-  return (
-    <div>
-      Hello World
-    </div>
-  );
+    return <ProductListPage />
 }
 
-export default App;
+export default App

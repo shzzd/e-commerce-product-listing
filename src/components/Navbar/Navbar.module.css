@@ -1,0 +1,133 @@
+.wrapper {
+  background-color: var(--navbar-back);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  box-shadow: 0.03rem 0.01rem 0.5rem 0.01rem rgba(131, 131, 131, 0.589);
+  /* clip-path: inset(0px 0px -15px 0px); */
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+}
+
+.logo {
+  background-color: var(--white);
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  margin-left: 1.2rem;
+}
+
+.sections {
+  /* border: 1px red solid; */
+  display: flex;
+  flex-direction: row;
+  gap: 0.8rem;
+  margin-right: 2rem;
+}
+
+.sections > div {
+  position: relative;
+  padding: 12px;
+  background-color: var(--yellow);
+  font-weight: 700;
+  font-size: 0.7rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.sections > div:hover .dropDown {
+  display: flex;
+}
+
+.dropDown {
+  box-shadow: 0.03rem 0.01rem 0.5rem 0.01rem rgba(131, 131, 131, 0.589);
+  border-bottom: 3px var(--yellow) solid;
+  display: none;
+  flex-direction: column;
+  background-color: var(--white);
+  position: absolute;
+  top: 3.2rem;
+  left: 0;
+  text-transform: uppercase;
+  padding: 0.5rem;
+  width: 7rem;
+}
+
+.dropDown::before {
+  content: "";
+  border-top: 1.1rem transparent solid;
+  position: absolute;
+  top: -1rem;
+  margin-left: -0.5rem;
+  width: 8rem;
+}
+
+.arrowUp {
+  position: absolute;
+  top: -1rem;
+  left: 2rem;
+  width: 1.3rem;
+}
+
+.dropDown > div {
+  padding: 0.5rem;
+  position: relative;
+}
+
+.dropDown > div:hover {
+  cursor: pointer;
+  background-color: var(--light-blue);
+  color: var(--blue);
+}
+
+.dropDown > div:hover .subDropDown {
+  display: flex;
+}
+
+.subDropDown {
+  box-shadow: 0.03rem 0.01rem 0.5rem 0.01rem rgba(131, 131, 131, 0.589);
+  border-bottom: 3px var(--yellow) solid;
+  display: none;
+  flex-direction: column;
+  background-color: var(--white);
+  color: black;
+  position: absolute;
+  top: 0;
+  left: 119%;
+  padding: 0.5rem;
+}
+
+.subDropDown::before {
+  content: "";
+  border-left: 1.8rem transparent solid;
+  height: 100%;
+  position: absolute;
+  top: 0rem;
+  left: -1.1rem;
+  margin-left: -0.5rem;
+}
+
+.arrowLeft {
+  position: absolute;
+  top: 0.5rem;
+  left: -0.9rem;
+  width: 0.9rem;
+}
+
+.subDropDown > div {
+  width: max-content;
+  padding: 0.5rem;
+}
+
+.subDropDown > div:hover {
+  cursor: pointer;
+  background-color: var(--light-blue);
+  color: var(--blue);
+}
+
+@media (max-width: 430px) {
+}

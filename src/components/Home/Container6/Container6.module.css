@@ -1,0 +1,198 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem;
+}
+
+.wrapper > h2:nth-child(1) {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--title-grey);
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.wrapper > p:nth-child(2) {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-grey);
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 5rem;
+  width: 70rem;
+  margin-bottom: 5rem;
+}
+
+.containerSwap {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 5rem;
+  width: 70rem;
+  margin-bottom: 5rem;
+}
+
+.sub1 {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+  width: 50%;
+}
+
+.sub1 > h4:nth-child(1) {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--title-grey);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.sub1 > h4:nth-child(1) > img {
+  width: 2rem;
+  height: 2rem;
+}
+
+.sub1 > p:nth-child(2) {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-grey);
+  text-align: justify;
+}
+
+.sub2 {
+  border-radius: 1rem;
+  background-image: url("../../../assets/bg.png");
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  width: 50%;
+  height: 25rem;
+}
+
+.container .sub2 > .s1 {
+  background-color: var(--blue);
+  border-radius: 50%;
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--white);
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 1rem;
+  position: absolute;
+  left: -3rem;
+  bottom: 2.5rem;
+  z-index: 3;
+}
+
+.container .sub2 > .s1:hover {
+  opacity: 0;
+  z-index: 4;
+}
+
+.container .sub2 > .s2 {
+  background-color: var(--yellow);
+  border-radius: 50%;
+  width: 5rem;
+  height: 5rem;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: black;
+  font-size: 2rem;
+  font-weight: 500;
+  padding: 1rem;
+  position: absolute;
+  left: -3rem;
+  bottom: 2.5rem;
+  z-index: 2;
+}
+
+.container .sub2 > .s1:hover + .s2 {
+  display: flex;
+}
+
+.containerSwap .sub2 > .s1 {
+  background-color: var(--blue);
+  border-radius: 50%;
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--white);
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 1rem;
+  position: absolute;
+  right: -3.5rem;
+  bottom: 2.5rem;
+  z-index: 3;
+}
+
+.containerSwap .sub2 > .s1:hover {
+  opacity: 0;
+  z-index: 4;
+}
+
+.containerSwap .sub2 > .s2 {
+  background-color: var(--yellow);
+  border-radius: 50%;
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: black;
+  font-size: 2rem;
+  font-weight: 500;
+  padding: 1rem;
+  position: absolute;
+  right: -3.5rem;
+  bottom: 2.5rem;
+  z-index: 2;
+}
+
+.containerSwap .sub2 > .s1:hover + .s2 {
+  display: flex;
+}
+
+.btn {
+  border: 1px var(--blue) solid;
+  border-radius: 0.3rem;
+  padding: 0.5rem 2rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--blue);
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: var(--blue);
+  color: var(--white);
+}
