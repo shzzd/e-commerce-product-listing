@@ -7,21 +7,7 @@ export default function List(props) {
         var date = new Date()
 
         const result = props.product?.filter((data) => {
-            //   const activeData = data.endtime > date.toISOString();
-            //   const inactiveData = data.endtime < date.toISOString();
-            //   const active = "Active";
-            //   const inactive = "Inactive";
             return (
-                // data.name.toLowerCase().match(search.toLowerCase()) ||
-                // data.email.toLowerCase().match(search.toLowerCase()) ||
-                // data.company.toLowerCase().match(search.toLowerCase()) ||
-                // data.designation.toLowerCase().match(search.toLowerCase()) ||
-                // data.role.toLowerCase().match(search.toLowerCase()) ||
-                // (active.toLowerCase().match(search.toLowerCase())
-                //   ? activeData
-                //   : inactive.toLowerCase().match(search.toLowerCase())
-                //   ? inactiveData
-                //   : null)
                 props.search !== '' && data.title.toLowerCase().match(props.search.toLowerCase())
                 // (props.category.c1 !== '' && data.category.toLowerCase().match(props.category.c1.toLowerCase())) ||
                 // (props.category.c2 !== '' && data.category.toLowerCase().match(props.category.c2.toLowerCase()))
