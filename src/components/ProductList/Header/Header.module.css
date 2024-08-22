@@ -12,7 +12,7 @@
 }
 
 .wrapper > h1 {
-    font-size: larger;
+    font-size: 1.3rem;
 }
 
 .options {
@@ -24,8 +24,9 @@
 }
 
 .searchBar {
-    background-color: rgb(255, 247, 237);
-    padding: 0.3rem 0.5rem;
+    border: 1px rgb(230, 230, 230) solid;
+    background-color: #f1f1f1;
+    padding: 0rem 0.5rem;
     border-radius: 0.3rem;
     display: flex;
     flex-direction: row;
@@ -43,9 +44,10 @@
     background-color: transparent;
     border: none;
     outline: none;
-    padding: 0.3rem;
+    padding: 0.6rem 0.3rem;
     color: #212121;
     font-weight: 500;
+    width: 15rem;
 }
 
 .sort {
@@ -141,7 +143,7 @@
 
 .view > div:hover,
 .view > div:hover * {
-    background-color: #fff8e0b9;
+    background-color: #e8e8e8b9;
     cursor: pointer;
 }
 

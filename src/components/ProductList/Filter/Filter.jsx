@@ -1,65 +1,54 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import classes from './Filter.module.css'
 import { AiFillFilter } from 'react-icons/ai'
-import { SelectField } from '../../Resource'
+import { MultiRange, SelectField } from '../../Resource'
 
 export default function Filter(props) {
-    const [c1, setC1] = useState(false)
-    const [c2, setC2] = useState(false)
-    const [c3, setC3] = useState(false)
-    const [c4, setC4] = useState(false)
-    const checkList = (index, checked, setChecked, categoryValue) => {
-        return (
-            <div>
-                <input
-                    type="checkbox"
-                    value={checked}
-                    onChange={(e) => {
-                        if (e && !checked) {
-                            setChecked(true)
-                            if (index === 0) {
-                                props.setCategory((prev) => {
-                                    return { ...prev, c1: categoryValue }
-                                })
-                            } else if (index === 1) {
-                                props.setCategory((prev) => {
-                                    return { ...prev, c2: categoryValue }
-                                })
-                            } else if (index === 2) {
-                                props.setCategory((prev) => {
-                                    return { ...prev, c3: categoryValue }
-                                })
-                            } else if (index === 3) {
-                                props.setCategory((prev) => {
-                                    return { ...prev, c4: categoryValue }
-                                })
-                            }
-                        } else {
-                            setChecked(false)
-                            if (index === 0) {
-                                props.setCategory((prev) => {
-                                    return { ...prev, c1: '' }
-                                })
-                            } else if (index === 1) {
-                                props.setCategory((prev) => {
-                                    return { ...prev, c2: '' }
-                                })
-                            } else if (index === 2) {
-                                props.setCategory((prev) => {
-                                    return { ...prev, c3: '' }
-                                })
-                            } else if (index === 3) {
-                                props.setCategory((prev) => {
-                                    return { ...prev, c4: '' }
-                                })
-                            }
-                        }
-                    }}
-                />
-                {categoryValue}
-            </div>
+    const handleCategoryChange = (category) => {
+        props.setSelectedCategories((prev) =>
+            prev.includes(category) ? prev.filter((e) => e !== category) : [...prev, category]
         )
     }
+
+    const categoryCheckbox = (category) => {
+        return (
+            <label className={classes.checkBox}>
+                <input
+                    type="checkbox"
+                    onChange={() => handleCategoryChange(category)}
+                    checked={props.selectedCategories.includes(category)}
+                />
+                <span>{category}</span>
+            </label>
+        )
+    }
+
+    const handlePriceChange = (e) => {
+        props.setPriceRange((prev) => {
+            return { ...prev, min: e.minValue, max: e.maxValue }
+        })
+    }
+
+    const handleStockFilterChange = (e) => {
+        props.setStockFilter(e.target.value)
+    }
+
+    const stockFilterRadiobox = (value, label, productLength) => {
+        return (
+            <label className={classes.radioBox}>
+                <input
+                    type="radio"
+                    value={value}
+                    checked={props.stockFilter === value}
+                    onChange={handleStockFilterChange}
+                />
+                <span>
+                    {label} <span className={classes.lengthValue}>({productLength})</span>
+                </span>
+            </label>
+        )
+    }
+
     return (
         <div className={classes.wrapper}>
             <div className={classes.filter}>
@@ -69,29 +58,33 @@ export default function Filter(props) {
                 <div>Filter</div>
             </div>
             <div className={classes.category}>
-                <div>Category</div>
-                {checkList(0, c1, setC1, props.categories[0])}
-                {checkList(1, c2, setC2, props.categories[1])}
-                {checkList(2, c3, setC3, props.categories[2])}
-                {checkList(3, c4, setC4, props.categories[3])}
-                {/* <input
-                    type="checkbox"
-                    name="category1"
-                    value={c1}
-                    onChange={(e) => {
-                        if (e && !c1) {
-                            setC1(true)
-                            props.setCategory((prev) => {
-                                return { ...prev, c1: 'electronics' }
-                            })
-                        } else {
-                            setC1(false)
-                            props.setCategory((prev) => {
-                                return { ...prev, c1: '' }
-                            })
-                        }
-                    }}
-                /> */}
+                <h3>Category</h3>
+                {categoryCheckbox(props.categories[0])}
+                {categoryCheckbox(props.categories[1])}
+                {categoryCheckbox(props.categories[2])}
+                {categoryCheckbox(props.categories[3])}
+            </div>
+            <div className={classes.category}>
+                <h3>Price</h3>
+                <div>
+                    ${props.priceRange.min} - ${props.priceRange.max}
+                </div>
+                {props.product.length !== 0 && (
+                    <MultiRange
+                        min={props.priceDefault.min}
+                        max={props.priceDefault.max}
+                        minValue={props.priceRange.min}
+                        maxValue={props.priceRange.max}
+                        handleInput={handlePriceChange}
+                    />
+                )}
+            </div>
+
+            <div className={classes.category}>
+                <h3>Availablity</h3>
+                {stockFilterRadiobox('all', 'All Products', props.product.length)}
+                {stockFilterRadiobox('inStock', 'In Stock', props.inStockCount)}
+                {stockFilterRadiobox('outOfStock', 'Out of Stock', props.outOfStockCount)}
             </div>
         </div>
     )
