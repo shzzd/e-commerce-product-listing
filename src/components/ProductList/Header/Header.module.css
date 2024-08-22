@@ -1,0 +1,151 @@
+.wrapper {
+    /* border: 1px red solid; */
+    padding: 0 0 1rem 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    background-color: #ffff;
+}
+
+.wrapper > h1 {
+    font-size: larger;
+}
+
+.options {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+}
+
+.searchBar {
+    background-color: rgb(255, 247, 237);
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+}
+
+.iconSearch {
+    font-size: 1.2rem;
+    color: #616161;
+}
+
+.searchBar > input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 0.3rem;
+    color: #212121;
+    font-weight: 500;
+}
+
+.sort {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+    width: 10rem;
+}
+
+.sort > div:nth-child(1) {
+    color: #767676;
+    font-size: 0.9rem;
+}
+
+.sort > .sortSelect {
+    /* border: 1px #949494 solid; */
+    border-radius: 0.2rem;
+    /* padding: 0.1rem 0.5rem 0.3rem 0.6rem; */
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.icon {
+    margin-bottom: -0.2rem;
+    font-size: 0.9rem;
+}
+
+.sortSelect:hover .sortOption {
+    display: flex;
+}
+
+.sortOption {
+    border: 1px #949494 solid;
+    background-color: #ffffffcb;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 0.2rem;
+    position: absolute;
+    top: 120%;
+    right: 0;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: hidden;
+}
+
+.sortOption > span:nth-child(1) {
+    border-bottom: 1px lightgrey solid;
+}
+
+.sortOption > span {
+    /* border: 1px grey solid; */
+    padding: 0.3rem 0.5rem 0.5rem 0.5rem;
+    width: 5rem;
+    font-size: 0.9rem;
+    text-align: left;
+    transition: 0.3s ease;
+}
+
+.sortOption > span:hover {
+    /* border: 1px grey solid; */
+    padding: 0.3rem 0.3rem 0.5rem 0.7rem;
+    background-color: #fff8e0b9;
+    cursor: pointer;
+}
+
+.view {
+    display: flex;
+    flex-direction: row;
+}
+
+.view > div {
+    border: 1px lightgrey solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.view > div:nth-child(1) {
+    border-radius: 0.2rem 0 0 0.2rem;
+    padding: 0.4rem 0.5rem 0.4rem 0.7rem;
+}
+
+.view > div:hover,
+.view > div:hover * {
+    background-color: #fff8e0b9;
+    cursor: pointer;
+}
+
+.view > div:nth-child(2) {
+    border-radius: 0 0.2rem 0.2rem 0;
+    padding: 0.4rem 0.7rem 0.4rem 0.5rem;
+}

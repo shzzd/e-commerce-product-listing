@@ -1,39 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { IoIosArrowDown, IoIosList } from 'react-icons/io'
 import classes from './ProductList.module.css'
+import { CiSearch } from 'react-icons/ci'
+import { TbLayoutGridFilled } from 'react-icons/tb'
+import { AiFillFilter } from 'react-icons/ai'
+import Filter from './Filter/Filter'
+import Header from './Header/Header'
+import List from './List/List'
 
 export default function ProductList(props) {
     console.log(props.product)
+    console.log(props.categories)
+    const [search, setSearch] = useState('')
+    const [category, setCategory] = useState({
+        c1: '',
+        c2: '',
+        c3: '',
+        c4: '',
+    })
+
+    console.log(category)
     return (
         <div className={classes.wrapper}>
-            <div>filter</div>
+            <Filter categories={props.categories} setCategory={setCategory} />
             <div>
-                <div className={classes.options}>
-                    <h1>Product List ({props.length})</h1>
-                    <div>
-                        <input
-                            type="text"
-                            placeholder="Search products..."
-                            // value={searchTerm}
-                            // onChange={(e) => setSearchTerm(e.target.value)}
-                        />
-                    </div>
-                    <div>
-                        Sort by <div></div>
-                    </div>
-                    <div>list view</div>
-                </div>
-                <div className={classes.list}>
-                    {props.product.map((data, index) => (
-                        <div key={index} className={classes.productCard}>
-                            <div className={classes.image}>
-                                <img src={data.image} alt="" />
-                            </div>
-                            <h2>{data.title}</h2>
-                            {/* <div className={classes.description}>{data.description}</div> */}
-                            <div className={classes.price}>${data.price}</div>
-                        </div>
-                    ))}
-                </div>
+                <Header search={search} setSearch={setSearch} length={props.length} />
+                <List search={search} product={props.product} category={category} />
             </div>
         </div>
     )

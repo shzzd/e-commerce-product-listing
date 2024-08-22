@@ -3,106 +3,14 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap: 1rem;
     padding: 2rem;
     position: relative;
-    /* width: 90rem; */
     max-width: 90vw;
     text-align: center;
 }
 
-.wrapper > div:nth-child(1) {
-    border-right: 1px grey solid;
-    width: 12rem;
-    /* height: 70vh; */
-}
-
 .wrapper > div:nth-child(2) {
-    /* width: 80%; */
-}
-
-.options {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
-}
-
-.options > h1 {
-    font-size: larger;
-}
-
-.list {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-    /* border: 1px red solid; */
-    height: 80vh;
-    overflow: auto;
-    scrollbar-width: thin;
-    scrollbar-color: #c5c5c5 #f6f6f6;
-}
-
-.list::-webkit-scrollbar {
-    width: 0.5rem;
-    height: 2rem;
-}
-
-.list::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.list::-webkit-scrollbar-thumb {
-    background-color: #616161;
-    border-radius: 20px;
-    border: none;
-}
-
-.productCard {
-    border: 1px lightgray solid;
-    border-radius: 0.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-}
-
-.productCard > .image {
-    /* border: 1px red solid; */
-    width: 12rem;
-    height: 12rem;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 1rem;
-}
-
-.image > img {
-    max-width: 100%;
-    max-height: 100%;
-    vertical-align: middle;
-}
-
-.productCard > h2 {
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-}
-
-.productCard > .description {
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--text-grey);
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    max-width: 100%;
-    text-align: justify;
-}
-
-.productCard > .price {
-    font-size: 1rem;
+    min-width: 80%;
+    position: relative;
+    margin-left: 2rem;
 }
