@@ -50,13 +50,20 @@
     width: 15rem;
 }
 
+.options > div:nth-child(2) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}
+
 .sort {
+    /* border: 1px red solid; */
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    gap: 0.5rem;
-    width: 10rem;
+    /* width: 10rem; */
 }
 
 .sort > div:nth-child(1) {
@@ -78,12 +85,16 @@
     font-weight: 500;
 }
 
-.icon {
-    margin-bottom: -0.2rem;
-    font-size: 0.9rem;
+.sort > .sortSelect > span {
+    margin-left: 0.3rem;
 }
 
-.sortSelect:hover .sortOption {
+.icon {
+    margin-bottom: -0.2rem;
+    font-size: 1.1rem;
+}
+
+.sort:hover .sortOption {
     display: flex;
 }
 
@@ -94,32 +105,43 @@
     -webkit-backdrop-filter: blur(5px);
     border-radius: 0.2rem;
     position: absolute;
-    top: 120%;
+    top: 1.5rem;
     right: 0;
-    width: fit-content;
-    display: flex;
+    min-width: max-content;
+    display: none;
     flex-direction: column;
     align-items: flex-start;
-    overflow: hidden;
+    /* overflow: hidden; */
+    z-index: 100;
 }
 
-.sortOption > span:nth-child(1) {
-    border-bottom: 1px lightgrey solid;
+.sortOption::before {
+    content: '';
+    border-top: 0.8rem transparent solid;
+    position: absolute;
+    top: -0.8rem;
+    margin-left: 0rem;
+    width: 100%;
+    z-index: 102;
 }
 
 .sortOption > span {
-    /* border: 1px grey solid; */
+    border-bottom: 1px lightgrey solid;
     padding: 0.3rem 0.5rem 0.5rem 0.5rem;
-    width: 5rem;
+    width: 10rem;
     font-size: 0.9rem;
     text-align: left;
     transition: 0.3s ease;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .sortOption > span:hover {
     /* border: 1px grey solid; */
     padding: 0.3rem 0.3rem 0.5rem 0.7rem;
-    background-color: #fff8e0b9;
+    background-color: #edededb9;
     cursor: pointer;
 }
 
@@ -150,4 +172,16 @@
 .view > div:nth-child(2) {
     border-radius: 0 0.2rem 0.2rem 0;
     padding: 0.4rem 0.7rem 0.4rem 0.5rem;
+}
+
+@media (max-width: 1200px) {
+    .wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .options {
+        justify-content: space-between;
+        width: 100%;
+    }
 }

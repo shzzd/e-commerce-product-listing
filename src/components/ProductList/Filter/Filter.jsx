@@ -24,9 +24,11 @@ export default function Filter(props) {
     }
 
     const handlePriceChange = (e) => {
-        props.setPriceRange((prev) => {
-            return { ...prev, min: e.minValue, max: e.maxValue }
-        })
+        props.setMin(e.minValue)
+        props.setMax(e.maxValue)
+        // props.setPriceRange((prev) => {
+        //     return { ...prev, min: e.minValue, max: e.maxValue }
+        // })
     }
 
     const handleStockFilterChange = (e) => {
@@ -67,14 +69,23 @@ export default function Filter(props) {
             <div className={classes.category}>
                 <h3>Price</h3>
                 <div>
-                    ${props.priceRange.min} - ${props.priceRange.max}
+                    ${props.min} - ${props.max}
                 </div>
-                {props.product.length !== 0 && (
+                {/* {props.product.length !== 0 && (
                     <MultiRange
                         min={props.priceDefault.min}
                         max={props.priceDefault.max}
                         minValue={props.priceRange.min}
                         maxValue={props.priceRange.max}
+                        handleInput={handlePriceChange}
+                    />
+                )} */}
+                {props.product.length !== 0 && (
+                    <MultiRange
+                        min={Math.min(...props.product.map((e) => e.price))}
+                        max={Math.max(...props.product.map((e) => e.price))}
+                        minValue={props.min}
+                        maxValue={props.max}
                         handleInput={handlePriceChange}
                     />
                 )}

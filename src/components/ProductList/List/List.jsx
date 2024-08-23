@@ -15,34 +15,10 @@ export default function List(props) {
         // Filter by multiple categories
         if (props.selectedCategories.length > 0) {
             result = result.filter((e) => props.selectedCategories.includes(e.category))
-            console.log(result.map((e) => e.price))
-            // props.setPriceDefault((prev) => {
-            //     return {
-            //         ...prev,
-            //         min: Math.min(...result.map((e) => e.price)),
-            //         max: Math.max(...result.map((e) => e.price)),
-            //     }
-            // })
         }
-        // else {
-        //     props.setPriceDefault((prev) => {
-        //         return {
-        //             ...prev,
-        //             min: Math.min(...props.product.map((e) => e.price)),
-        //             max: Math.max(...props.product.map((e) => e.price)),
-        //         }
-        //     })
-        //     props.setPriceRange((prev) => {
-        //         return {
-        //             ...prev,
-        //             min: Math.min(...props.product.map((e) => e.price)),
-        //             max: Math.max(...props.product.map((e) => e.price)),
-        //         }
-        //     })
-        // }
 
         // Filter by price range
-        result = result.filter((e) => e.price >= props.priceRange.min && e.price <= props.priceRange.max)
+        result = result.filter((e) => e.price >= props.min && e.price <= props.max)
 
         // Filter by availabily
         if (props.stockFilter === 'inStock') {
@@ -51,30 +27,32 @@ export default function List(props) {
             result = result.filter((e) => e.rating.count === 0)
         }
 
-        // const result = props.product?.filter((data) => {
-        //   const activeData = data.endtime > date.toISOString();
-        //   const inactiveData = data.endtime < date.toISOString();
-        //   const active = "Active";
-        //   const inactive = "Inactive";
-        // return (
-        // data.name.toLowerCase().match(search.toLowerCase()) ||
-        // data.email.toLowerCase().match(search.toLowerCase()) ||
-        // data.company.toLowerCase().match(search.toLowerCase()) ||
-        // data.designation.toLowerCase().match(search.toLowerCase()) ||
-        // data.role.toLowerCase().match(search.toLowerCase()) ||
-        // (active.toLowerCase().match(search.toLowerCase())
-        //   ? activeData
-        //   : inactive.toLowerCase().match(search.toLowerCase())
-        //   ? inactiveData
-        //   : null)
-        // props.search !== '' && data.title.toLowerCase().match(props.search.toLowerCase())
-        // (props.category.c1 !== '' && data.category.toLowerCase().match(props.category.c1.toLowerCase())) ||
-        // (props.category.c2 !== '' && data.category.toLowerCase().match(props.category.c2.toLowerCase()))
-        // )
-        // })
+        // Sort by selected option
+        if (props.sortOption === '1') {
+            result = result.sort((x, y) => x.title.localeCompare(y.title))
+        } else if (props.sortOption === '2') {
+            result = result.sort((x, y) => -1 * x.title.localeCompare(y.title))
+        } else if (props.sortOption === '3') {
+            result = result.sort((x, y) => x.price - y.price)
+        } else if (props.sortOption === '4') {
+            result = result.sort((x, y) => y.price - x.price)
+        } else if (props.sortOption === '5') {
+            result = result.sort((x, y) => x.rating.rate - y.rating.rate)
+        } else if (props.sortOption === '6') {
+            result = result.sort((x, y) => y.rating.rate - x.rating.rate)
+        }
 
         setfilteredData(result)
-    }, [props.product, props.search, props.selectedCategories, props.priceRange, props.stockFilter])
+    }, [
+        props.product,
+        props.search,
+        props.selectedCategories,
+        props.priceRange,
+        props.stockFilter,
+        props.sortOption,
+        props.min,
+        props.max,
+    ])
 
     return (
         <div className={classes.wrapper}>
