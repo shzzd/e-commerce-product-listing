@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import classes from './List.module.css'
+import { GridView, ListView } from '../../Resource'
 
 export default function List(props) {
     const [filteredData, setfilteredData] = useState([])
     useEffect(() => {
-        var date = new Date()
         let result = props.product
 
         // Search by title
@@ -47,7 +47,6 @@ export default function List(props) {
         props.product,
         props.search,
         props.selectedCategories,
-        props.priceRange,
         props.stockFilter,
         props.sortOption,
         props.min,
@@ -55,16 +54,9 @@ export default function List(props) {
     ])
 
     return (
-        <div className={classes.wrapper}>
+        <div className={!props.view ? classes.wrapper : classes.wrapperList}>
             {filteredData.map((data, index) => (
-                <div key={index} className={classes.productCard}>
-                    <div className={classes.image}>
-                        <img src={data.image} alt="" />
-                    </div>
-                    <h2>{data.title}</h2>
-                    {/* <div className={classes.description}>{data.description}</div> */}
-                    <div className={classes.price}>${data.price}</div>
-                </div>
+                <>{!props.view ? <GridView index={index} data={data} /> : <ListView index={index} data={data} />}</>
             ))}
         </div>
     )

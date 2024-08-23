@@ -5,47 +5,20 @@ import Header from './Header/Header'
 import List from './List/List'
 
 export default function ProductList(props) {
-    const [search, setSearch] = useState('')
+    const [close, setClose] = useState(false) // close state for filter on mobile
+    const [view, setView] = useState(false) // grid/list view
+    const [search, setSearch] = useState('') // search input
     const [sortOption, setSortOption] = useState('0') // 'select', 'Name: A to Z' ...
     const [selectedCategories, setSelectedCategories] = useState([])
-    // const [priceDefault, setPriceDefault] = useState({ min: 0, max: 1000 })
-    const [priceRange, setPriceRange] = useState({ min: 0, max: 100 })
-    const [min, setMin] = useState(0)
-    const [max, setMax] = useState(100)
+    const [min, setMin] = useState(0) // price max range
+    const [max, setMax] = useState(100) // price max range
     const [stockFilter, setStockFilter] = useState('all') // 'all', 'inStock', 'outOfStock'
-    // console.log(max)
 
     // Count the number of in-stock and out-of-stock products
     const inStockCount = props.product.filter((e) => e.rating.count > 0).length
     const outOfStockCount = props.product.filter((e) => e.rating.count === 0).length
 
-    // useEffect(() => {
-    //     console.log('useEffect triggered111111111111')
-    //     const getRange = () => {
-    //         setPriceDefault((prev) => {
-    //             return {
-    //                 ...prev,
-    //                 min: Math.min(...props.product.map((e) => e.price)),
-    //                 max: Math.max(...props.product.map((e) => e.price)),
-    //             }
-    //         })
-    //     }
-    //     getRange()
-    // }, [props.product])
-
-    // useEffect(() => {
-    //     console.log('useEffect triggered2222222222')
-    //     const getRange = () => {
-    //         setPriceRange((prev) => {
-    //             return {
-    //                 ...prev,
-    //                 max: Math.max(...props.product.map((e) => e.price)),
-    //             }
-    //         })
-    //     }
-    //     getRange()
-    // }, [props.product])
-
+    // set max range price once the data get fetch
     useEffect(() => {
         setMax(
             Math.max(...props.product.map((e) => e.price)) > 0 ? Math.max(...props.product.map((e) => e.price)) : 100
@@ -59,9 +32,6 @@ export default function ProductList(props) {
                 categories={props.categories}
                 selectedCategories={selectedCategories}
                 setSelectedCategories={setSelectedCategories}
-                priceRange={priceRange}
-                setPriceRange={setPriceRange}
-                // priceDefault={priceDefault}
                 min={min}
                 max={max}
                 setMin={setMin}
@@ -72,6 +42,8 @@ export default function ProductList(props) {
                 outOfStockCount={outOfStockCount}
                 sortOption={sortOption}
                 setSortOption={setSortOption}
+                close={close}
+                setClose={setClose}
             />
             <div>
                 <Header
@@ -80,15 +52,15 @@ export default function ProductList(props) {
                     length={props.length}
                     sortOption={sortOption}
                     setSortOption={setSortOption}
+                    close={close}
+                    setClose={setClose}
+                    view={view}
+                    setView={setView}
                 />
                 <List
                     search={search}
                     product={props.product}
                     selectedCategories={selectedCategories}
-                    priceRange={priceRange}
-                    // setPriceRange={setPriceRange}
-                    // priceDefault={priceDefault}
-                    // setPriceDefault={setPriceDefault}
                     min={min}
                     max={max}
                     setMin={setMin}
@@ -97,8 +69,11 @@ export default function ProductList(props) {
                     setStockFilter={setStockFilter}
                     sortOption={sortOption}
                     setSortOption={setSortOption}
+                    view={view}
+                    setView={setView}
                 />
             </div>
+            {!close && <div className={classes.cover}></div>}
         </div>
     )
 }

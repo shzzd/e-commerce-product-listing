@@ -8,7 +8,9 @@ import { TiTick } from 'react-icons/ti'
 export default function Header(props) {
     return (
         <div className={classes.wrapper}>
-            <h1>Product List ({props.length})</h1>
+            <h1>
+                Product List <span>({props.length})</span>
+            </h1>
             <div className={classes.options}>
                 <div className={classes.searchBar}>
                     <CiSearch className={classes.iconSearch} />
@@ -20,6 +22,11 @@ export default function Header(props) {
                     />
                 </div>
                 <div>
+                    <div
+                        onClick={() => (!props.close ? props.setClose(true) : props.setClose(false))}
+                        className={classes.filter}>
+                        <span>Filters</span> <IoMdArrowDropdown className={classes.icon} />
+                    </div>
                     <div className={classes.sort}>
                         <div>Sort by</div>
                         <div className={classes.sortSelect}>
@@ -77,10 +84,10 @@ export default function Header(props) {
                         </div>
                     </div>
                     <div className={classes.view}>
-                        <div>
+                        <div onClick={() => !props.view && props.setView(true)}>
                             <IoIosList />
                         </div>
-                        <div>
+                        <div onClick={() => props.view && props.setView(false)}>
                             <TbLayoutGridFilled />
                         </div>
                     </div>

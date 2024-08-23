@@ -26,9 +26,6 @@ export default function Filter(props) {
     const handlePriceChange = (e) => {
         props.setMin(e.minValue)
         props.setMax(e.maxValue)
-        // props.setPriceRange((prev) => {
-        //     return { ...prev, min: e.minValue, max: e.maxValue }
-        // })
     }
 
     const handleStockFilterChange = (e) => {
@@ -52,7 +49,7 @@ export default function Filter(props) {
     }
 
     return (
-        <div className={classes.wrapper}>
+        <div className={!props.close ? classes.wrapper : classes.wrapperClose}>
             <div className={classes.filter}>
                 <div className={classes.iconFilter}>
                     <AiFillFilter />
@@ -61,41 +58,43 @@ export default function Filter(props) {
             </div>
             <div className={classes.category}>
                 <h3>Category</h3>
-                {categoryCheckbox(props.categories[0])}
-                {categoryCheckbox(props.categories[1])}
-                {categoryCheckbox(props.categories[2])}
-                {categoryCheckbox(props.categories[3])}
+                <div className={classes.box}>
+                    {categoryCheckbox(props.categories[0])}
+                    {categoryCheckbox(props.categories[1])}
+                    {categoryCheckbox(props.categories[2])}
+                    {categoryCheckbox(props.categories[3])}
+                </div>
             </div>
             <div className={classes.category}>
                 <h3>Price</h3>
-                <div>
-                    ${props.min} - ${props.max}
+                <div className={classes.priceRange}>
+                    <div>
+                        ${props.min} - ${props.max}
+                    </div>
+                    {props.product.length !== 0 && (
+                        <MultiRange
+                            min={Math.min(...props.product.map((e) => e.price))}
+                            max={Math.max(...props.product.map((e) => e.price))}
+                            minValue={props.min}
+                            maxValue={props.max}
+                            handleInput={handlePriceChange}
+                        />
+                    )}
                 </div>
-                {/* {props.product.length !== 0 && (
-                    <MultiRange
-                        min={props.priceDefault.min}
-                        max={props.priceDefault.max}
-                        minValue={props.priceRange.min}
-                        maxValue={props.priceRange.max}
-                        handleInput={handlePriceChange}
-                    />
-                )} */}
-                {props.product.length !== 0 && (
-                    <MultiRange
-                        min={Math.min(...props.product.map((e) => e.price))}
-                        max={Math.max(...props.product.map((e) => e.price))}
-                        minValue={props.min}
-                        maxValue={props.max}
-                        handleInput={handlePriceChange}
-                    />
-                )}
             </div>
 
             <div className={classes.category}>
                 <h3>Availablity</h3>
-                {stockFilterRadiobox('all', 'All Products', props.product.length)}
-                {stockFilterRadiobox('inStock', 'In Stock', props.inStockCount)}
-                {stockFilterRadiobox('outOfStock', 'Out of Stock', props.outOfStockCount)}
+                <div className={classes.box}>
+                    {stockFilterRadiobox('all', 'All Products', props.product.length)}
+                    {stockFilterRadiobox('inStock', 'In Stock', props.inStockCount)}
+                    {stockFilterRadiobox('outOfStock', 'Out of Stock', props.outOfStockCount)}
+                </div>
+            </div>
+            <div
+                onClick={() => (!props.close ? props.setClose(true) : props.setClose(false))}
+                className={classes.close}>
+                Close
             </div>
         </div>
     )
