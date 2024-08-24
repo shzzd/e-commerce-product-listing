@@ -69,6 +69,7 @@ App -> Pages -> Product List Page -> Product List
 -   List
     -   List View
     -   Grid View
+    -   Pagination
 -   Filter
     -   Title
     -   Category Filter
@@ -84,4 +85,14 @@ App -> Pages -> Product List Page -> Product List
 
 ## Desktop View
 
-![App Screenshot](./src/assets/desktop.png)
+![App Screenshot](./src/assets/d1.png)
+
+![App Screenshot](./src/assets/d2.png)
+
+![App Screenshot](./src/assets/d3.png)
+
+## Mobile View
+
+![App Screenshot](./src/assets/m1.png)
+
+![App Screenshot](./src/assets/m2.png)
