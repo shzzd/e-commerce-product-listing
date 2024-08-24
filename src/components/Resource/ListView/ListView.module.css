@@ -129,6 +129,11 @@
 }
 
 @media (max-width: 415px) {
+    .productCard {
+        width: 90%;
+        margin: 0 auto;
+    }
+
     .details > h2 {
         font-size: 1.3rem;
     }

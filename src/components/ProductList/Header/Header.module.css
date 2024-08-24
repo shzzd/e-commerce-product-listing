@@ -223,8 +223,16 @@
         font-size: 1.3rem;
     }
 
+    .sort > div:nth-child(2) {
+        font-size: 1.3rem;
+    }
+
+    .sortOption {
+        top: 2rem;
+    }
+
     .sortOption > span {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         width: 16rem;
     }
 }
@@ -239,5 +247,25 @@
 
     .options > div:nth-child(2) {
         justify-content: flex-end;
+    }
+
+    .view > div {
+        font-size: 1.6rem;
+    }
+    .sort > div:nth-child(1) {
+        font-size: 1.3rem;
+    }
+
+    .sort > div:nth-child(2) {
+        font-size: 1.3rem;
+    }
+
+    .sortOption {
+        top: 2rem;
+    }
+
+    .sortOption > span {
+        font-size: 1.5rem;
+        width: 16rem;
     }
 }

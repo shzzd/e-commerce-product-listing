@@ -21,7 +21,9 @@ export default function ProductList(props) {
     // set max range price once the data get fetch
     useEffect(() => {
         setMax(
-            Math.max(...props.product.map((e) => e.price)) > 0 ? Math.max(...props.product.map((e) => e.price)) : 100
+            props.product.length > 0 && Math.max(...props.product.map((e) => e.price)) > 0
+                ? Math.max(...props.product.map((e) => e.price))
+                : 100
         )
     }, [props.product])
 
