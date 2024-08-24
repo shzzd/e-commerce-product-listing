@@ -87,12 +87,22 @@ App -> Pages -> Product List Page -> Product List
 
 ![App Screenshot](./src/assets/d1.png)
 
+#### Sort Option
+
 ![App Screenshot](./src/assets/d2.png)
 
+#### List View and Filter Option
+
 ![App Screenshot](./src/assets/d3.png)
+
+#### Search by product title, Pagination, Filter and Sorting at a time
+
+![App Screenshot](./src/assets/d4.png)
 
 ## Mobile View
 
 ![App Screenshot](./src/assets/m1.png)
+
+#### Filter Pop Up
 
 ![App Screenshot](./src/assets/m2.png)
