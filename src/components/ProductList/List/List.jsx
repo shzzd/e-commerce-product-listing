@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import classes from './List.module.css'
 import { GridView, ListView } from '../../Resource'
+import Loading from '../../Resource/Loading/Loading'
 
 export default function List(props) {
     const [currentPage, setCurrentPage] = useState(1) // Pagination
     const [productsPerPage] = useState(8) // Number of products per page (adjustable)
     const [filteredData, setfilteredData] = useState([]) // filtered data
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         let result = props.product
@@ -64,38 +66,50 @@ export default function List(props) {
 
     return (
         <>
-            {/* Grid and List product view */}
-            <div className={!props.view ? classes.wrapper : classes.wrapperList}>
-                {currentProducts.map((data, index) => (
-                    <>{!props.view ? <GridView index={index} data={data} /> : <ListView index={index} data={data} />}</>
-                ))}
-            </div>
-            {/* Pagination */}
-            <div className={classes.pagination}>
-                <button
-                    onClick={() => {
-                        if (currentPage > 1) {
-                            setCurrentPage(currentPage - 1)
-                            window.scrollTo(0, 0)
-                        }
-                    }}
-                    disabled={currentPage > 1 ? false : true}
-                    className={currentPage === currentPage ? 'active' : ''}>
-                    « Previouse
-                </button>
-                <div>{currentPage}</div>
-                <button
-                    onClick={() => {
-                        if (currentPage < totalPages) {
-                            setCurrentPage(currentPage + 1)
-                            window.scrollTo(0, 0)
-                        }
-                    }}
-                    disabled={currentPage < totalPages ? false : true}
-                    className={currentPage === currentPage ? 'active' : ''}>
-                    Next »
-                </button>
-            </div>
+            {filteredData.length !== 0 ? (
+                <>
+                    {/* Grid and List product view */}
+                    <div className={!props.view ? classes.wrapper : classes.wrapperList}>
+                        {currentProducts.map((data, index) => (
+                            <>
+                                {!props.view ? (
+                                    <GridView index={index} data={data} />
+                                ) : (
+                                    <ListView index={index} data={data} />
+                                )}
+                            </>
+                        ))}
+                    </div>
+                    {/* Pagination */}
+                    <div className={classes.pagination}>
+                        <button
+                            onClick={() => {
+                                if (currentPage > 1) {
+                                    setCurrentPage(currentPage - 1)
+                                    window.scrollTo(0, 0)
+                                }
+                            }}
+                            disabled={currentPage > 1 ? false : true}
+                            className={currentPage === currentPage ? 'active' : ''}>
+                            « Previouse
+                        </button>
+                        <div>{currentPage}</div>
+                        <button
+                            onClick={() => {
+                                if (currentPage < totalPages) {
+                                    setCurrentPage(currentPage + 1)
+                                    window.scrollTo(0, 0)
+                                }
+                            }}
+                            disabled={currentPage < totalPages ? false : true}
+                            className={currentPage === currentPage ? 'active' : ''}>
+                            Next »
+                        </button>
+                    </div>
+                </>
+            ) : (
+                <Loading />
+            )}
         </>
     )
 }
