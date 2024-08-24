@@ -52,6 +52,7 @@
     color: #212121;
     font-weight: 500;
     width: 18rem;
+    cursor: text;
 }
 
 .options > div:nth-child(2) {
@@ -67,12 +68,14 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+    cursor: pointer;
     /* width: 10rem; */
 }
 
 .sort > div:nth-child(1) {
     color: #767676;
     font-size: 1rem;
+    cursor: pointer;
 }
 
 .sort > .sortSelect {
@@ -87,6 +90,7 @@
     gap: 0.2rem;
     font-size: 0.9rem;
     font-weight: 500;
+    cursor: pointer;
 }
 
 .sort > .sortSelect > span {

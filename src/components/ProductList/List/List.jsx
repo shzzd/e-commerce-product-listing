@@ -3,7 +3,10 @@ import classes from './List.module.css'
 import { GridView, ListView } from '../../Resource'
 
 export default function List(props) {
-    const [filteredData, setfilteredData] = useState([])
+    const [currentPage, setCurrentPage] = useState(1) // Pagination
+    const [productsPerPage] = useState(8) // Number of products per page (adjustable)
+    const [filteredData, setfilteredData] = useState([]) // filtered data
+
     useEffect(() => {
         let result = props.product
 
@@ -53,11 +56,46 @@ export default function List(props) {
         props.max,
     ])
 
+    // Calculate pagination details
+    const indexOfLastProduct = currentPage * productsPerPage
+    const indexOfFirstProduct = indexOfLastProduct - productsPerPage
+    const currentProducts = filteredData.slice(indexOfFirstProduct, indexOfLastProduct)
+    const totalPages = Math.ceil(filteredData.length / productsPerPage)
+
     return (
-        <div className={!props.view ? classes.wrapper : classes.wrapperList}>
-            {filteredData.map((data, index) => (
-                <>{!props.view ? <GridView index={index} data={data} /> : <ListView index={index} data={data} />}</>
-            ))}
-        </div>
+        <>
+            {/* Grid and List product view */}
+            <div className={!props.view ? classes.wrapper : classes.wrapperList}>
+                {currentProducts.map((data, index) => (
+                    <>{!props.view ? <GridView index={index} data={data} /> : <ListView index={index} data={data} />}</>
+                ))}
+            </div>
+            {/* Pagination */}
+            <div className={classes.pagination}>
+                <button
+                    onClick={() => {
+                        if (currentPage > 1) {
+                            setCurrentPage(currentPage - 1)
+                            window.scrollTo(0, 0)
+                        }
+                    }}
+                    disabled={currentPage > 1 ? false : true}
+                    className={currentPage === currentPage ? 'active' : ''}>
+                    « Previouse
+                </button>
+                <div>{currentPage}</div>
+                <button
+                    onClick={() => {
+                        if (currentPage < totalPages) {
+                            setCurrentPage(currentPage + 1)
+                            window.scrollTo(0, 0)
+                        }
+                    }}
+                    disabled={currentPage < totalPages ? false : true}
+                    className={currentPage === currentPage ? 'active' : ''}>
+                    Next »
+                </button>
+            </div>
+        </>
     )
 }

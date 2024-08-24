@@ -4,12 +4,14 @@ import { AiFillFilter } from 'react-icons/ai'
 import { MultiRange, SelectField } from '../../Resource'
 
 export default function Filter(props) {
+    // Check if the category is included or not in selected categories to set
     const handleCategoryChange = (category) => {
         props.setSelectedCategories((prev) =>
             prev.includes(category) ? prev.filter((e) => e !== category) : [...prev, category]
         )
     }
 
+    // Checkbox template for category filter
     const categoryCheckbox = (category) => {
         return (
             <label className={classes.checkBox}>
@@ -23,15 +25,18 @@ export default function Filter(props) {
         )
     }
 
+    // Set the price tansition to min and max in every change
     const handlePriceChange = (e) => {
         props.setMin(e.minValue)
         props.setMax(e.maxValue)
     }
 
+    // Set stock state for filter
     const handleStockFilterChange = (e) => {
         props.setStockFilter(e.target.value)
     }
 
+    // Radiobox template for product availability filter
     const stockFilterRadiobox = (value, label, productLength) => {
         return (
             <label className={classes.radioBox}>
@@ -56,6 +61,7 @@ export default function Filter(props) {
                 </div>
                 <div>Filter</div>
             </div>
+            {/* Filter by Category */}
             <div className={classes.category}>
                 <h3>Category</h3>
                 <div className={classes.box}>
@@ -65,6 +71,7 @@ export default function Filter(props) {
                     {categoryCheckbox(props.categories[3])}
                 </div>
             </div>
+            {/* Filter by Price Range */}
             <div className={classes.category}>
                 <h3>Price</h3>
                 <div className={classes.priceRange}>
@@ -82,7 +89,7 @@ export default function Filter(props) {
                     )}
                 </div>
             </div>
-
+            {/* Filter by Availability */}
             <div className={classes.category}>
                 <h3>Availablity</h3>
                 <div className={classes.box}>
@@ -91,6 +98,7 @@ export default function Filter(props) {
                     {stockFilterRadiobox('outOfStock', 'Out of Stock', props.outOfStockCount)}
                 </div>
             </div>
+            {/* Close button using only for mobile screen */}
             <div
                 onClick={() => (!props.close ? props.setClose(true) : props.setClose(false))}
                 className={classes.close}>

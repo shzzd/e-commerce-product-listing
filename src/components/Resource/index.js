@@ -1,6 +1,6 @@
-import SelectField from './SelectField/SelectField'
 import MultiRange from './MultiRange/MultiRange'
 import GridView from './GridView/GridView'
 import ListView from './ListView/ListView'
+import ButtonTemplate from './ButtonTemplate/ButtonTemplate'
 
-export { SelectField, MultiRange, GridView, ListView }
+export { MultiRange, GridView, ListView, ButtonTemplate }

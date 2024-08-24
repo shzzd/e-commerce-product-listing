@@ -51,6 +51,7 @@
 .productCard > .price {
     font-size: 1.2rem;
     font-weight: 500;
+    margin-bottom: 1rem;
 }
 
 @media (max-width: 450px) {

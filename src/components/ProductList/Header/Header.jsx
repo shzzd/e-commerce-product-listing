@@ -1,17 +1,44 @@
-import React from 'react'
+import React, { useState } from 'react'
 import classes from './Header.module.css'
 import { CiSearch } from 'react-icons/ci'
-import { IoIosArrowDown, IoIosList, IoMdArrowDropdown } from 'react-icons/io'
+import { IoIosList, IoMdArrowDropdown } from 'react-icons/io'
 import { TbLayoutGridFilled } from 'react-icons/tb'
 import { TiTick } from 'react-icons/ti'
 
 export default function Header(props) {
+    const [options] = useState([
+        'Default',
+        'Name: A to Z',
+        'Name: Z to A',
+        'Price: Low to High',
+        'Price: High to Low',
+        'Rating: Low to High',
+        'Rating: High to Low',
+    ])
+
+    // Sort option template
+    const sortOptionTemplate = (name) => {
+        return (
+            <>
+                <span>{name}</span> <IoMdArrowDropdown className={classes.icon} />
+            </>
+        )
+    }
+
+    const optionsTemplate = (length) => {
+        return [...Array(length)].map((_, index) => (
+            <span onClick={() => props.setSortOption(`${index}`)}>
+                {options[index]} {props.sortOption === `${index}` && <TiTick />}
+            </span>
+        ))
+    }
     return (
         <div className={classes.wrapper}>
             <h1>
                 Product List <span>({props.length})</span>
             </h1>
             <div className={classes.options}>
+                {/* Search bar */}
                 <div className={classes.searchBar}>
                     <CiSearch className={classes.iconSearch} />
                     <input
@@ -22,67 +49,34 @@ export default function Header(props) {
                     />
                 </div>
                 <div>
+                    {/* Filter Pop Up for Mobile Screen */}
                     <div
                         onClick={() => (!props.close ? props.setClose(true) : props.setClose(false))}
                         className={classes.filter}>
                         <span>Filters</span> <IoMdArrowDropdown className={classes.icon} />
                     </div>
+                    {/* Sort by */}
                     <div className={classes.sort}>
                         <div>Sort by</div>
                         <div className={classes.sortSelect}>
-                            {props.sortOption === '1' ? (
-                                <>
-                                    <span>Name: A to Z</span> <IoMdArrowDropdown className={classes.icon} />
-                                </>
-                            ) : props.sortOption === '2' ? (
-                                <>
-                                    <span>Name: Z to A</span> <IoMdArrowDropdown className={classes.icon} />
-                                </>
-                            ) : props.sortOption === '3' ? (
-                                <>
-                                    <span>Price: Low to High</span> <IoMdArrowDropdown className={classes.icon} />
-                                </>
-                            ) : props.sortOption === '4' ? (
-                                <>
-                                    <span>Price: High to Low</span> <IoMdArrowDropdown className={classes.icon} />
-                                </>
-                            ) : props.sortOption === '5' ? (
-                                <>
-                                    <span>Rating: Low to High</span> <IoMdArrowDropdown className={classes.icon} />
-                                </>
-                            ) : props.sortOption === '6' ? (
-                                <>
-                                    <span>Rating: High to Low</span> <IoMdArrowDropdown className={classes.icon} />
-                                </>
-                            ) : (
-                                <>
-                                    <IoMdArrowDropdown className={classes.icon} />
-                                </>
-                            )}
+                            {props.sortOption === '1'
+                                ? sortOptionTemplate('Name: A to Z')
+                                : props.sortOption === '2'
+                                ? sortOptionTemplate('Name: Z to A')
+                                : props.sortOption === '3'
+                                ? sortOptionTemplate('Price: Low to High')
+                                : props.sortOption === '4'
+                                ? sortOptionTemplate('Price: Low to High')
+                                : props.sortOption === '5'
+                                ? sortOptionTemplate('Rating: Low to High')
+                                : props.sortOption === '6'
+                                ? sortOptionTemplate('Rating: High to Low')
+                                : sortOptionTemplate('')}
                             <span id={classes.cover}></span>
-                            <div className={classes.sortOption}>
-                                <span onClick={() => props.setSortOption('0')}>Default</span>
-                                <span onClick={() => props.setSortOption('1')}>
-                                    Name: A to Z {props.sortOption === '1' && <TiTick />}
-                                </span>
-                                <span onClick={() => props.setSortOption('2')}>
-                                    Name: Z to A {props.sortOption === '2' && <TiTick />}
-                                </span>
-                                <span onClick={() => props.setSortOption('3')}>
-                                    Price: Low to High {props.sortOption === '3' && <TiTick />}
-                                </span>
-                                <span onClick={() => props.setSortOption('4')}>
-                                    Price: High to Low {props.sortOption === '4' && <TiTick />}
-                                </span>
-                                <span onClick={() => props.setSortOption('5')}>
-                                    Rating: Low to High {props.sortOption === '5' && <TiTick />}
-                                </span>
-                                <span onClick={() => props.setSortOption('6')}>
-                                    Rating: High to Low {props.sortOption === '6' && <TiTick />}
-                                </span>
-                            </div>
+                            <div className={classes.sortOption}>{optionsTemplate(7)}</div>
                         </div>
                     </div>
+                    {/* List or Grid View */}
                     <div className={classes.view}>
                         <div onClick={() => !props.view && props.setView(true)}>
                             <IoIosList />

@@ -4,6 +4,7 @@ body {
         'Droid Sans', 'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
 }
 
 code {
@@ -14,24 +15,6 @@ code {
     padding: 0;
     margin: 0;
     cursor: default;
-}
-
-:root {
-    --dark-blue: #001029;
-    --blue: #003080;
-    --blue-blur1: #00308091;
-    --blue-blur2: #003080eb;
-    --blue2: #003fa9;
-    --light-blue: #e9f1ff;
-    --title-grey: #212529;
-    --text-grey: #21252999;
-    --border-grey: #d9d9d9;
-    --border-grey2: #00308026;
-    --inner-grey: #a0a0a0;
-    --yellow: #ffe600;
-    --white: #ffffff;
-    --black: #000000;
-    --navbar-back: #000522a1;
 }
 
 html {

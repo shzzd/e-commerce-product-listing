@@ -5,7 +5,7 @@ import Header from './Header/Header'
 import List from './List/List'
 
 export default function ProductList(props) {
-    const [close, setClose] = useState(false) // close state for filter on mobile
+    const [close, setClose] = useState(true) // close state for filter on mobile
     const [view, setView] = useState(false) // grid/list view
     const [search, setSearch] = useState('') // search input
     const [sortOption, setSortOption] = useState('0') // 'select', 'Name: A to Z' ...
@@ -27,6 +27,7 @@ export default function ProductList(props) {
 
     return (
         <div className={classes.wrapper}>
+            {/* Filter Section (left side) */}
             <Filter
                 product={props.product}
                 categories={props.categories}
@@ -46,6 +47,7 @@ export default function ProductList(props) {
                 setClose={setClose}
             />
             <div>
+                {/* Header section (right side top) */}
                 <Header
                     search={search}
                     setSearch={setSearch}
@@ -57,6 +59,7 @@ export default function ProductList(props) {
                     view={view}
                     setView={setView}
                 />
+                {/* list section (right side under Header) */}
                 <List
                     search={search}
                     product={props.product}
@@ -73,6 +76,7 @@ export default function ProductList(props) {
                     setView={setView}
                 />
             </div>
+            {/* Set cover to show blur back side screen when use mobile filter (only for mobile screen) */}
             {!close && <div className={classes.cover}></div>}
         </div>
     )
