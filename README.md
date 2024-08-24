@@ -81,3 +81,7 @@ App -> Pages -> Product List Page -> Product List
 -   List View
 -   Grid View
 -   Multi Range
+
+## Desktop View
+
+![App Screenshot](./src/assets/desktop.png)
