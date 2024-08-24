@@ -91,13 +91,17 @@ App -> Pages -> Product List Page -> Product List
 
 ![App Screenshot](./src/assets/d2.png)
 
-#### List View and Filter Option
+#### List View
+
+![App Screenshot](./src/assets/d3.png)
+
+#### Filter and Sorting
 
 ![App Screenshot](./src/assets/d3.png)
 
 #### Search by product title, Pagination, Filter and Sorting at a time
 
-![App Screenshot](./src/assets/d4.png)
+![App Screenshot](./src/assets/d5.png)
 
 ## Mobile View
 
