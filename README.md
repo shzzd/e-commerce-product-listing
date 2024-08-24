@@ -52,7 +52,7 @@ Using npm:
 npm start
 ```
 
-### Components Structure
+## Components Structure
 
 App -> Pages -> Product List Page -> Product List
 
