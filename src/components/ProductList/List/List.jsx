@@ -91,7 +91,7 @@ export default function List(props) {
                             }}
                             disabled={currentPage > 1 ? false : true}
                             className={currentPage === currentPage ? 'active' : ''}>
-                            « Previouse
+                            « Previous
                         </button>
                         <div>{currentPage}</div>
                         <button
@@ -108,7 +108,8 @@ export default function List(props) {
                     </div>
                 </>
             ) : (
-                <Loading />
+                // <Loading />
+                'No product available!'
             )}
         </>
     )

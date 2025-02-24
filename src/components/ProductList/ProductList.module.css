@@ -5,13 +5,15 @@
     justify-content: center;
     padding: 2rem;
     position: relative;
+    width: 100%;
     max-width: 90vw;
     margin: 0 auto;
     text-align: center;
 }
 
 .wrapper > div:nth-child(2) {
-    min-width: 80%;
+    /* border: 1px red solid; */
+    width: 80%;
     position: relative;
     margin-left: 2rem;
 }
@@ -26,7 +28,6 @@
     }
     .wrapper > div:nth-child(2) {
         margin-left: 0;
-        min-width: 100%;
         width: 100%;
     }
 
@@ -45,7 +46,6 @@
 @media (max-width: 450px) {
     .wrapper > div:nth-child(2) {
         margin-left: 0;
-        min-width: none;
         width: 100%;
     }
 }

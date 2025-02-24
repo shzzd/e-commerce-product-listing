@@ -3,20 +3,29 @@
     border-radius: 0.5rem;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: flex-start;
     padding: 1rem;
 }
 
 .image {
     /* border: 1px red solid; */
-    width: 12rem;
+    width: 22%;
     height: 12rem;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 1rem;
+}
+
+.productCard > div:nth-child(2) {
+    /* border: 1px red solid; */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 75%;
 }
 
 .details {
@@ -102,6 +111,12 @@
 } */
 
 @media (max-width: 450px) {
+    .image {
+        width: 30%;
+    }
+    .productCard > div:nth-child(2) {
+        width: 70%;
+    }
     .details > h2 {
         font-size: 1.5rem;
     }
@@ -129,11 +144,6 @@
 }
 
 @media (max-width: 415px) {
-    .productCard {
-        width: 90%;
-        margin: 0 auto;
-    }
-
     .details > h2 {
         font-size: 1.3rem;
     }
