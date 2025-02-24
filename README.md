@@ -1,6 +1,7 @@
 # E-Commerce Product List
 
 It is a responsive e-commerce product listing page with multiple features using React.js.
+Here is the link - https://shzzd.github.io/e-commerce-product-listing/
 
 #### Features
 
@@ -24,8 +25,8 @@ Ensure you have the following software installed on your machine:
 1. **Clone the repository**:
 
     ```bash
-    git clone https://github.com/shzzd/nextgen-landing-page-assignment.git
-    cd nextgen-landing-page-assignment.git
+    git clone https://github.com/shzzd/e-commerce-product-listing.git
+    cd e-commerce-product-listing.git
     ```
 
 2. **Install dependencies**:
